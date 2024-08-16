@@ -16,7 +16,7 @@ function Search() {
     const [loading,setLoading]=useState(false);
     const fetchData=()=>{
       setLoading(true)
-      fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${value}&type=video&key=AIzaSyBEZ10oohBj9sEh_B4rjLXwsjlTX_-I5Ng`).then(res=>res.json()).then(data=>{
+      fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${value}&type=video&key=AIzaSyBEZ10oohBj9sEh_B4rjLXwsjlTX_-I5Ng`).then(res=>res.json()).then(data=>{
         // console.log(data)
         setLoading(false)
         // setminicard(data.items);
