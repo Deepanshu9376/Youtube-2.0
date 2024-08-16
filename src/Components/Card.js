@@ -3,15 +3,15 @@ import { View, Image, Text, StyleSheet,Dimensions } from "react-native";
 import image from "../../assets/image.png";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-const Card = () => {
+const Card = (props) => {
   return (
     <View style={styles.parentall}>
-      <Image source={image} style={{ width: "100%", height: 200 }} />
+      <Image source={{uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`}} style={{ width: "100%", height: 200 }} />
       <View style={styles.icons}>
         <MaterialIcons name="account-circle" size={40} color="black" />
         <View style={styles.info}>
-          <Text style={styles.infoheader} ellipsizeMode="tail" numberOfLines={2}>India's Got Latent of the e=legends tisndnj sdjkdsjdsbd kjdsnjslkdjlkjdlkjslkjlkkjjnklsjdkljlkjlk</Text>
-          <Text>Samay Raina</Text>
+          <Text style={styles.infoheader} ellipsizeMode="tail" numberOfLines={2}>{props.title}</Text>
+          <Text>{props.channel}</Text>
         </View>
       </View>
     </View>

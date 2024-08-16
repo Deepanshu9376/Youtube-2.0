@@ -14,13 +14,7 @@ function Explore() {
    <View style={{flex:1}}>
     <Header/>
     {/* <Text>Explore screen</Text> */}
-    <View style={{flexDirection:'row',flex:'wrap'}}>
-
     <Littlecard/>
-    <Littlecard/>
-    <Littlecard/>
-    <Littlecard/>
-    </View>
    </View>
   )
 }

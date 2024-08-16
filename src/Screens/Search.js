@@ -4,20 +4,23 @@ import { TextInput, View ,StyleSheet, ScrollView,FlatList,ActivityIndicator} fro
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MiniCard from "../Components/MiniCard";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=songs&type=video&key=AIzaSyBEZ10oohBj9sEh_B4rjLXwsjlTX_-I5Ng
 
 function Search() {
     const [value,setValue]=useState("");
-    const [minicard,setminicard]=useState([]);
+    // const [minicard,setminicard]=useState([]);
+    const dispatch=useDispatch();
+    const minicard = useSelector((state) => state.minicard);
     const [loading,setLoading]=useState(false);
     const fetchData=()=>{
       setLoading(true)
       fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${value}&type=video&key=AIzaSyBEZ10oohBj9sEh_B4rjLXwsjlTX_-I5Ng`).then(res=>res.json()).then(data=>{
         // console.log(data)
         setLoading(false)
-        setminicard(data.items);
+        // setminicard(data.items);
+        dispatch({type:"add",payload: data.items})
       })
     }
     const navigation=useNavigation();
@@ -39,7 +42,7 @@ function Search() {
         channel={item.snippet.channelTitle}
         />
       }}
-      keyExtractor={item=>item.id.videoId}
+      keyExtractor={(item, index) => item.id.videoId + index.toString()}
       />
     </View>
   );
